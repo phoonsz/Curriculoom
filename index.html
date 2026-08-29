@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR" spellcheck="false">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculoom – Gerador de Currículo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar" role="toolbar">
+    <h1>Curriculoom</h1>
+    <p>Clique em qualquer texto para editar. Use os botões para adicionar ou remover itens.</p>
+    <div class="btn-group">
+      <button class="btn btn-ghost" data-action="toggleStylePanel">Cores e fonte</button>
+      <button class="btn btn-ghost" data-action="resetResume">Começar do zero</button>
+      <button class="btn btn-primary" data-action="printPdf">⬇ PDF</button>
+    </div>
+  </header>
+
+  <!-- Style Panel -->
+  <aside class="style-panel" id="stylePanel" hidden>
+    <div class="style-field">
+      <label for="colorAccent">Destaque</label>
+      <input type="color" id="colorAccent" value="#3B82F6" data-style="accent" />
+    </div>
+    <div class="style-field">
+      <label for="colorSidebar">Lateral</label>
+      <input type="color" id="colorSidebar" value="#1E3A5F" data-style="sidebar" />
+    </div>
+    <div class="style-field">
+      <label for="colorInk">Títulos</label>
+      <input type="color" id="colorInk" value="#0F172A" data-style="ink" />
+    </div>
+    <div class="style-field">
+      <label for="colorBody">Corpo</label>
+      <input type="color" id="colorBody" value="#334155" data-style="body" />
+    </div>
+    <div class="style-field">
+      <label for="fontSelect">Fonte</label>
+      <select id="fontSelect" data-style="font">
+        <option value="'Segoe UI', Arial, Helvetica, sans-serif">Segoe UI</option>
+        <option value="Arial, Helvetica, sans-serif">Arial</option>
+        <option value="Georgia, 'Times New Roman', serif">Georgia</option>
+        <option value="'Times New Roman', Times, serif">Times New Roman</option>
+        <option value="Verdana, Geneva, sans-serif">Verdana</option>
+        <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+        <option value="Garamond, 'Palatino Linotype', serif">Garamond</option>
+        <option value="'Courier New', Courier, monospace">Courier New</option>
+      </select>
+    </div>
+    <button class="btn btn-ghost" data-action="resetStyle">Restaurar padrão</button>
+  </aside>
+
+  <!-- Preset Overlay -->
+  <div id="presetOverlay" class="preset-overlay" role="dialog" aria-modal="true">
+    <div class="preset-modal">
+      <h2>Escolha um modelo</h2>
+      <p>Selecione o layout que melhor se adequa ao seu perfil.</p>
+      <div class="preset-grid" id="presetGrid"></div>
+    </div>
+  </div>
+
+  <!-- Resume Container -->
+  <main class="page-wrap">
+    <div class="page" id="resumeContainer"></div>
+  </main>
+
+  <!-- ========== TEMPLATES ========== -->
+  <template id="tmpl-preset-card">
+    <div class="preset-card" data-preset-id="">
+      <div class="thumbnail"></div>
+      <h3></h3>
+      <p class="desc"></p>
+    </div>
+  </template>
+
+  <template id="tmpl-resume-classic">
+    <!-- Full classic layout – the exact same HTML but without inline onclick -->
+    <div class="sidebar">
+      <h1 class="name-mirror"><span data-field="firstName">Nome</span> <span class="last" data-field="lastName">Sobrenome</span></h1>
+      <div class="role-line" contenteditable="true" data-ph="Subtítulo curto">Seu título profissional</div>
+
+      <div class="side-block">
+        <div class="side-title">Contato</div>
+        <div class="list-container" data-list="contacts">
+          <div class="contact-row" data-component="contact">
+            <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+            <div class="contact-label" contenteditable="true" data-ph="RÓTULO">Telefone</div>
+            <div class="contact-value" contenteditable="true" data-ph="valor">(00) 00000-0000</div>
+          </div>
+          <div class="contact-row" data-component="contact">
+            <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+            <div class="contact-label" contenteditable="true" data-ph="RÓTULO">Email</div>
+            <div class="contact-value" contenteditable="true" data-ph="valor">seu@email.com</div>
+          </div>
+        </div>
+        <button class="add-link on-dark" data-action="addContact">+ Contato</button>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Habilidades Técnicas</div>
+        <div class="tag-wrap" data-list="techTags">
+          <span class="tag" data-component="tag"><span class="tag-text" contenteditable="true">Habilidade técnica 1</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+          <span class="tag" data-component="tag"><span class="tag-text" contenteditable="true">Habilidade técnica 2</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+          <span class="tag" data-component="tag"><span class="tag-text" contenteditable="true">Habilidade técnica 3</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+        </div>
+        <button class="add-link on-dark" data-action="addTag" data-list="techTags">+ Habilidade</button>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Habilidades Interpessoais</div>
+        <div class="tag-wrap" data-list="softTags">
+          <span class="tag" data-component="tag"><span class="tag-text" contenteditable="true">Habilidade interpessoal 1</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+          <span class="tag" data-component="tag"><span class="tag-text" contenteditable="true">Habilidade interpessoal 2</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+          <span class="tag" data-component="tag"><span class="tag-text" contenteditable="true">Habilidade interpessoal 3</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+        </div>
+        <button class="add-link on-dark" data-action="addTag" data-list="softTags">+ Habilidade</button>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Idiomas</div>
+        <div class="list-container" data-list="languages">
+          <div class="lang-row" data-component="lang">
+            <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+            <div class="lang-top">
+              <span class="lang-name" contenteditable="true">Idioma 1</span>
+              <span class="lang-level" contenteditable="true">Nível</span>
+            </div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:80%"></div></div>
+            <input class="lang-slider" type="range" min="10" max="100" value="80" data-action="setLangBar" />
+          </div>
+          <div class="lang-row" data-component="lang">
+            <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+            <div class="lang-top">
+              <span class="lang-name" contenteditable="true">Idioma 2</span>
+              <span class="lang-level" contenteditable="true">Nível</span>
+            </div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:60%"></div></div>
+            <input class="lang-slider" type="range" min="10" max="100" value="60" data-action="setLangBar" />
+          </div>
+        </div>
+        <button class="add-link on-dark" data-action="addLanguage">+ Idioma</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <h1 class="header-name">
+        <span data-field="firstName" contenteditable="true">Nome</span> <span class="last" data-field="lastName" contenteditable="true">Sobrenome</span>
+      </h1>
+      <div class="role-tags" data-list="roleTags">
+        <span class="role-tag-wrap" data-component="tag"><span class="role-tag" contenteditable="true">Cargo 1</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+        <span class="role-tag-wrap" data-component="tag"><span class="role-tag" contenteditable="true">Cargo 2</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+        <span class="role-tag-wrap" data-component="tag"><span class="role-tag" contenteditable="true">Cargo 3</span><button class="x-btn" data-action="removeRow" aria-label="Remover">×</button></span>
+      </div>
+      <button class="add-link" data-action="addRoleTag">+ Cargo</button>
+      <hr class="header-rule" />
+
+      <section class="section">
+        <div class="section-title"><span class="section-title-text" contenteditable="true">Perfil</span><span class="section-title-bar"></span></div>
+        <p class="profile-text" contenteditable="true" data-ph="Escreva um breve resumo profissional...">Escreva aqui um resumo sobre você, destacando suas principais competências, experiências e objetivos profissionais.</p>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><span class="section-title-text" contenteditable="true">Experiência</span><span class="section-title-bar"></span></div>
+        <div class="list-container" data-list="experiences">
+          <div class="entry-wrap" data-component="entry">
+            <button class="x-btn section-del" data-action="removeEntry" aria-label="Remover entrada">×</button>
+            <div class="entry">
+              <div class="entry-top">
+                <span class="entry-title" contenteditable="true" data-ph="Cargo">Cargo / Função</span>
+                <span class="entry-date" contenteditable="true" data-ph="período">Mês/Ano – Mês/Ano</span>
+              </div>
+              <div class="sublines" data-list="sublines">
+                <div class="subline" data-component="subline">
+                  <span class="entry-sub" contenteditable="true" data-ph="Empresa / instituição">Nome da Empresa</span>
+                  <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+                </div>
+              </div>
+              <ul class="bullets" data-list="bullets">
+                <li data-component="bullet"><span contenteditable="true">Descrição da atividade ou conquista 1</span><button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button></li>
+                <li data-component="bullet"><span contenteditable="true">Descrição da atividade ou conquista 2</span><button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button></li>
+              </ul>
+              <button class="add-link" data-action="addBullet">+ Item</button>
+            </div>
+          </div>
+        </div>
+        <button class="add-link" data-action="addExperience">+ Experiência</button>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><span class="section-title-text" contenteditable="true">Educação</span><span class="section-title-bar"></span></div>
+        <div class="list-container" data-list="educations">
+          <div class="entry-wrap" data-component="entry">
+            <button class="x-btn section-del" data-action="removeEntry" aria-label="Remover entrada">×</button>
+            <div class="entry">
+              <div class="entry-top">
+                <span class="entry-title" contenteditable="true" data-ph="Curso / grau">Curso / Grau Acadêmico</span>
+              </div>
+              <div class="sublines" data-list="sublines">
+                <div class="subline" data-component="subline">
+                  <span class="entry-sub" contenteditable="true" data-ph="Instituição">Instituição de Ensino</span>
+                  <span class="entry-subdate" contenteditable="true" data-ph="período">Ano de início – Ano de conclusão</span>
+                  <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+                </div>
+              </div>
+              <button class="add-link" data-action="addSubline">+ Linha</button>
+            </div>
+          </div>
+        </div>
+        <button class="add-link" data-action="addEducation">+ Formação</button>
+      </section>
+
+      <button class="add-link" data-action="addCustomSection">+ Adicionar seção personalizada</button>
+    </div>
+  </template>
+
+  <!-- ========== PARTIAL TEMPLATES (used for dynamic additions) ========== -->
+  <template id="tmpl-contact-row">
+    <div class="contact-row" data-component="contact">
+      <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+      <div class="contact-label" contenteditable="true" data-ph="RÓTULO">Rótulo</div>
+      <div class="contact-value" contenteditable="true" data-ph="valor">Valor</div>
+    </div>
+  </template>
+
+  <template id="tmpl-lang-row">
+    <div class="lang-row" data-component="lang">
+      <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+      <div class="lang-top">
+        <span class="lang-name" contenteditable="true">Novo idioma</span>
+        <span class="lang-level" contenteditable="true">Nível</span>
+      </div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:60%"></div></div>
+      <input class="lang-slider" type="range" min="10" max="100" value="60" data-action="setLangBar" />
+    </div>
+  </template>
+
+  <template id="tmpl-tag-chip">
+    <span class="tag" data-component="tag">
+      <span class="tag-text" contenteditable="true">Nova habilidade</span>
+      <button class="x-btn" data-action="removeRow" aria-label="Remover">×</button>
+    </span>
+  </template>
+
+  <template id="tmpl-role-tag">
+    <span class="role-tag-wrap" data-component="tag">
+      <span class="role-tag" contenteditable="true">Novo cargo</span>
+      <button class="x-btn" data-action="removeRow" aria-label="Remover">×</button>
+    </span>
+  </template>
+
+  <template id="tmpl-bullet">
+    <li data-component="bullet">
+      <span contenteditable="true">Novo item</span>
+      <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+    </li>
+  </template>
+
+  <template id="tmpl-subline">
+    <div class="subline" data-component="subline">
+      <span class="entry-sub" contenteditable="true" data-ph="Instituição">Instituição</span>
+      <span class="entry-subdate" contenteditable="true" data-ph="período">Período</span>
+      <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+    </div>
+  </template>
+
+  <template id="tmpl-entry">
+    <div class="entry-wrap" data-component="entry">
+      <button class="x-btn section-del" data-action="removeEntry" aria-label="Remover entrada">×</button>
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-title" contenteditable="true" data-ph="Título">Título</span>
+          <span class="entry-date" contenteditable="true" data-ph="período">Período</span>
+        </div>
+        <div class="sublines" data-list="sublines">
+          <div class="subline" data-component="subline">
+            <span class="entry-sub" contenteditable="true" data-ph="Instituição / empresa">Instituição / empresa</span>
+            <button class="x-btn x-abs-mid" data-action="removeRow" aria-label="Remover">×</button>
+          </div>
+        </div>
+        <button class="add-link" data-action="addSubline">+ Linha</button>
+        <ul class="bullets" data-list="bullets"></ul>
+        <button class="add-link" data-action="addBullet">+ Item</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
