@@ -4,17 +4,17 @@ Gerador de currículos com edição inline, múltiplos layouts e salvamento auto
 
 ---
 
-• **Edição direta** – Clique em qualquer texto e altere na hora. Campos vazios mostram dicas do que preencher.
+• **Edição direta** - Clique em qualquer texto e altere na hora. Campos vazios mostram dicas do que preencher.
 
-• **Presets de layout** – Escolha entre modelos prontos (atualmente o Clássico, com mais a caminho). Cada preset mantém seu próprio conteúdo salvo.
+• **Presets de layout** - Escolha entre modelos prontos (atualmente o Clássico, com mais a caminho). Cada preset mantém seu próprio conteúdo salvo.
 
-• **Salvamento automático** – Todas as alterações ficam armazenadas no seu navegador. Feche e abra a página que seu currículo continua lá.
+• **Salvamento automático** - Todas as alterações ficam armazenadas no seu navegador. Feche e abra a página que seu currículo continua lá.
 
-• **Exportação para PDF** – Gere um PDF com a formatação exata do que você vê na tela, perfeito para imprimir ou enviar.
+• **Exportação para PDF** - Gere um PDF com a formatação exata do que você vê na tela, perfeito para imprimir ou enviar.
 
-• **Personalização visual** – Ajuste cores (destaque, fundo, textos) e fonte através de um painel simples. As preferências também são salvas.
+• **Personalização visual** - Ajuste cores (destaque, fundo, textos) e fonte através de um painel simples. As preferências também são salvas.
 
-• **Responsivo** – Funciona bem em celulares, tablets e desktops, sem comprometer o layout do currículo.
+• **Responsivo** - Funciona bem em celulares, tablets e desktops, sem comprometer o layout do currículo.
 
 ---
 
