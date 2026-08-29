@@ -67,7 +67,9 @@ _(em breve)_
 
 ## Licença
 
-Este projeto está sob a licença MIT. Sinta‑se livre para usar, modificar e distribuir.
+Este projeto pode ser usado, modificado e redistribuído gratuitamente. No entanto, nem este software nem versões modificadas podem ser vendidos ou redistribuídos comercialmente sem autorização explícita do detentor dos direitos autorais.
+
+Consulte o arquivo [LICENSE](./LICENSE.md) para obter os termos completos da licença.
 
 ---
 
