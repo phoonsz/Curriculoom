@@ -78,6 +78,6 @@ Consulte o arquivo [LICENSE](./LICENSE.md) para obter os termos completos da lic
 
 ## Autor
 
-Feito com 💙 por [phoonsz](https://github.com/phoonsz). Dúvidas, sugestões ou contribuições são sempre bem‑vindas!
+Feito com 💙 por [phoonsz](https://github.com/phoonsz) – dúvidas, sugestões ou contribuições são sempre bem‑vindas!
 
-[![phoon2much4zblock](https://github.com/user-attachments/assets/85edc0c6-c746-47c7-a690-8ac0614eae10)](https://github.com/phoonsz)
+![phoon2much4zblock](https://github.com/user-attachments/assets/85edc0c6-c746-47c7-a690-8ac0614eae10)
