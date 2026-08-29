@@ -55,7 +55,7 @@ curriculoom/
 
 8. Clique em **“Baixar PDF”** para exportar seu currículo.
 
-9. Todas as alterações são salvas automaticamente – ao reabrir a página, seu trabalho estará lá.
+9. Todas as alterações são salvas automaticamente. Ao reabrir a página, seu trabalho estará lá.
 
 ---
 
@@ -73,6 +73,6 @@ Este projeto está sob a licença MIT. Sinta‑se livre para usar, modificar e d
 
 ## Autor
 
-Feito com 💙 por [phoonsz](https://github.com/phoonsz) – dúvidas, sugestões ou contribuições são sempre bem‑vindas!
+Feito com 💙 por [phoonsz](https://github.com/phoonsz). Dúvidas, sugestões ou contribuições são sempre bem‑vindas!
 
 [![phoon2much4zblock](https://github.com/user-attachments/assets/85edc0c6-c746-47c7-a690-8ac0614eae10)](https://github.com/phoonsz)
