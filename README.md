@@ -32,10 +32,11 @@ Gerador de currículos com edição inline, múltiplos layouts e salvamento auto
 
 ## Estrutura do projeto
 curriculoom/
-├── index.html # Estrutura da página
-├── styles.css # Estilos e responsividade
-├── script.js # Lógica de edição, presets e salvamento
-└── README.md
+├── index.html          # Página principal (estrutura HTML)
+├── styles.css          # Estilos e responsividade
+├── script.js           # Lógica de edição, presets e salvamento
+├── LICENSE.md          # Termos de licenciamento
+└── README.md           # Documentação do projeto
 
 ---
 
