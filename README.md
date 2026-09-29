@@ -2,7 +2,7 @@
 
 Resume generator with inline editing, multiple layouts, and automatic saving. Developed in pure HTML, CSS, and JavaScript, with local storage in the browser.
 
-**🌍 Language:** **English** | [Português](./README.pt-BR.md)
+**Language:** **English** | [Português](./README.pt-BR.md)
 
 ---
 
