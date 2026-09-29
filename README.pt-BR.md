@@ -1,6 +1,6 @@
 # Curriculoom
 
-**🌍 Idioma:** [English](./README.md) | **Português**
+**Idioma:** [English](./README.md) | **Português**
 
 Gerador de currículos com edição inline, múltiplos layouts e salvamento automático. Desenvolvido em HTML, CSS e JavaScript puro, com armazenamento local no navegador.
 
