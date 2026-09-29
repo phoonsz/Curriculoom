@@ -1,83 +1,85 @@
 # Curriculoom
 
-Gerador de currículos com edição inline, múltiplos layouts e salvamento automático. Desenvolvido em HTML, CSS e JavaScript puro, com armazenamento local no navegador.
+Resume generator with inline editing, multiple layouts, and automatic saving. Developed in pure HTML, CSS, and JavaScript, with local storage in the browser.
+
+**🌍 Language:** **English** | [Português](./README.pt-BR.md)
 
 ---
 
-• **Edição direta** - Clique em qualquer texto e altere na hora. Campos vazios mostram dicas do que preencher.
+• **Direct editing** - Click any text and change it on the spot. Empty fields show hints of what to fill in.
 
-• **Presets de layout** - Escolha entre modelos prontos (atualmente o Clássico, com mais a caminho). Cada preset mantém seu próprio conteúdo salvo.
+• **Layout presets** - Choose from ready-made templates (currently Classic, with more on the way). Each preset keeps its own saved content.
 
-• **Salvamento automático** - Todas as alterações ficam armazenadas no seu navegador. Feche e abra a página que seu currículo continua lá.
+• **Automatic saving** - All changes are stored in your browser. Close and reopen the page and your resume is still there.
 
-• **Exportação para PDF** - Gere um PDF com a formatação exata do que você vê na tela, perfeito para imprimir ou enviar.
+• **PDF export** - Generate a PDF with the exact formatting of what you see on screen, perfect for printing or sending.
 
-• **Personalização visual** - Ajuste cores (destaque, fundo, textos) e fonte através de um painel simples. As preferências também são salvas.
+• **Visual customization** - Adjust colors (accent, background, text) and font through a simple panel. Preferences are also saved.
 
-• **Responsivo** - Funciona bem em celulares, tablets e desktops, sem comprometer o layout do currículo.
-
----
-
-## Tecnologias utilizadas
-
-• HTML5, CSS3 e JavaScript (vanilla)
-
-• Armazenamento local (localStorage / storage API) para salvar dados
-
-• CSS Grid e Flexbox para estrutura e responsividade
-
-• Print CSS para exportação limpa em PDF
+• **Responsive** - Works well on phones, tablets, and desktops, without compromising the resume layout.
 
 ---
 
-## Estrutura do projeto
+## Technologies used
+
+• HTML5, CSS3, and JavaScript (vanilla)
+
+• Local storage (localStorage / storage API) to save data
+
+• CSS Grid and Flexbox for structure and responsiveness
+
+• Print CSS for clean PDF export
+
+---
+
+## Project structure
 ```
 curriculoom/
-├── index.html          # Página principal (estrutura HTML)
-├── styles.css          # Estilos e responsividade
-├── script.js           # Lógica de edição, presets e salvamento
-├── LICENSE.md          # Termos de licenciamento
-└── README.md           # Documentação do projeto
+├── index.html          # Main page (HTML structure)
+├── styles.css          # Styles and responsiveness
+├── script.js           # Editing logic, presets, and saving
+├── LICENSE.md          # Licensing terms
+└── README.md           # Project documentation
 ```
 
 ---
 
-## Como usar
+## How to use
 
-1. Abra o arquivo `index.html` em qualquer navegador moderno.
+1. Open the `index.html` file in any modern browser.
 
-2. Se o javasript estiver quebrado(Não aparecer um layout de currículo na tela, você pode modificar o código de importação do JS no index.html para <script src="script.js"></script> ou pode hostear o HTML em um servidor local com ‘python -m http.server‘ no terminal.
+2. If JavaScript is broken (no resume layout appears on screen), you can change the JS import code in index.html to <script src="script.js"></script> or you can host the HTML on a local server with 'python -m http.server' in the terminal.
 
-4. Na tela inicial, escolha um modelo de currículo (atualmente apenas o Clássico).
+4. On the start screen, choose a resume template (currently only Classic).
    
-5. Clique sobre qualquer texto para editá-lo diretamente.
+5. Click on any text to edit it directly.
 
-6. Use os botões **“+”** para adicionar novos itens (contatos, habilidades, experiências, etc.) e **“×”** para remover.
+6. Use the **“+”** buttons to add new items (contacts, skills, experiences, etc.) and **“×”** to remove.
 
-7. Personalize cores e fonte no botão **“Cores e fonte”** da toolbar.
+7. Customize colors and font in the **“Colors and font”** button of the toolbar.
 
-8. Clique em **“Baixar PDF”** para exportar seu currículo.
+8. Click **“Download PDF”** to export your resume.
 
-9. Todas as alterações são salvas automaticamente. Ao reabrir a página, seu trabalho estará lá.
-
----
-
-## Capturas de tela
-
-_(em breve)_
+9. All changes are saved automatically. When you reopen the page, your work will be there.
 
 ---
 
-## Licença
+## Screenshots
 
-Este projeto pode ser usado, modificado e redistribuído gratuitamente. No entanto, nem este software nem versões modificadas podem ser vendidos ou redistribuídos comercialmente sem autorização explícita do detentor dos direitos autorais.
-
-Consulte o arquivo [LICENSE](./LICENSE.md) para obter os termos completos da licença.
+_(coming soon)_
 
 ---
 
-## Autor
+## License
 
-Feito com 💙 por [phoonsz](https://github.com/phoonsz) – dúvidas, sugestões ou contribuições são sempre bem‑vindas!
+This project can be used, modified, and redistributed freely. However, neither this software nor modified versions can be sold or redistributed commercially without explicit authorization from the copyright holder.
+
+See the [LICENSE](./LICENSE.md) file for the full terms of the license.
+
+---
+
+## Author
+
+Made with 💙 by [phoonsz](https://github.com/phoonsz) – questions, suggestions, or contributions are always welcome!
 
 ![phoon2much4zblock](https://github.com/user-attachments/assets/85edc0c6-c746-47c7-a690-8ac0614eae10)
